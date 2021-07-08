@@ -6,9 +6,9 @@ CLOCK = pygame.time.Clock()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GRAY = (131, 131, 131)
-WINDOW_HEIGHT = 800 #Pixel height of grid
-WINDOW_WIDTH = 800 #Pixel width of grid
-BLOCK_SIZE = 100  #Set the size of the grid block
+WINDOW_HEIGHT = 400 #Pixel height of grid
+WINDOW_WIDTH = 400 #Pixel width of grid
+BLOCK_SIZE = 50  #Set the size of the grid block
 GRID_WIDTH = int(WINDOW_WIDTH / BLOCK_SIZE) #Cell width of grid
 GRID_HEIGHT = int(WINDOW_HEIGHT / BLOCK_SIZE) #Cell height of grid
 BOARD_POS = (0, 0)
@@ -79,10 +79,15 @@ def placePieces(SCREEN, board):
             if currPiece:
                 color, type = currPiece
                 s1 = SINGLE_RED
-                s2 = SINGLE_RED
-                pos = pygame.Rect(BOARD_POS[0] + x * BLOCK_SIZE + 1, BOARD_POS[1] + y * BLOCK_SIZE + 1, BLOCK_SIZE, BLOCK_SIZE)
-                SCREEN.blit(s2, s2.get_rect(center=pos.center).move(1, 1))
-                SCREEN.blit(s1, s1.get_rect(center=pos.center))
+                s2 = SINGLE_BLACK
+                pos = pygame.Rect(BOARD_POS[0] + x * BLOCK_SIZE + 1, BOARD_POS[1] + y * BLOCK_SIZE + 1, BLOCK_SIZE,
+                                  BLOCK_SIZE)
+                if color == "red":
+                    SCREEN.blit(s1, s1.get_rect(center=pos.center))
+                elif color == "black":
+                    SCREEN.blit(s2, s2.get_rect(center=pos.center))
+
+
 
 
 def main():
